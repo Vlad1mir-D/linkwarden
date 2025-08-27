@@ -1,6 +1,15 @@
-import Jimp from "jimp";
+import { defaultFormats, defaultPlugins } from "jimp";
+// "png" is a typo in jimp/wasm-web exports
+// see https://github.com/jimp-dev/jimp/blob/v1.6.0/plugins/wasm-webp/src/index.ts#L104
+import png from "@jimp/wasm-webp";
+import { createJimp } from "@jimp/core";
 import { prisma } from "@linkwarden/prisma";
 import { createFile } from "@linkwarden/filesystem";
+
+const Jimp = createJimp({
+  formats: [...defaultFormats, png],
+  plugins: defaultPlugins,
+});
 
 export const generatePreview = async (
   buffer: Buffer,
@@ -16,8 +25,7 @@ export const generatePreview = async (
         return false;
       }
 
-      image.resize(1000, Jimp.AUTO).quality(55);
-      const processedBuffer = await image.getBufferAsync(Jimp.MIME_JPEG);
+      const processedBuffer = await image.resize({ w: 1000 }).getBuffer('image/jpeg', { quality: 55 });
 
       if (
         Buffer.byteLength(processedBuffer as any) >

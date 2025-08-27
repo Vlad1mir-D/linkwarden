@@ -58,7 +58,7 @@
     "himalaya": "^1.1.0",
     "https-proxy-agent": "^7.0.6",
     "i18next": "^23.11.5",
-    "jimp": "^0.22.10",
+    "jimp": "^1.6.0",
     "jsdom": "^22.1.0",
     "jszip": "^3.10.1",
     "lucide-react": "^0.511.0",
