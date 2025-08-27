@@ -45,6 +45,8 @@ RUN set -eux && \
 
 COPY . .
 
+RUN yarn next telemetry disable
+RUN yarn add sharp --ignore-workspace-root-check
 RUN yarn prisma:generate && \
     yarn web:build
 

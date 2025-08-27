@@ -19,7 +19,7 @@ export default function LinkIcon({
   onClick?: Function;
 }) {
   let iconClasses: string = clsx(
-    "rounded flex item-center justify-center shadow select-none z-10 w-12 h-12",
+    "rounded flex item-center justify-center shadow select-none z-10 w-8 h-8",
     !hideBackground &&
       "rounded-md backdrop-blur-xl bg-white/30 dark:bg-black/30 bg-opacity-50 p-1",
     className

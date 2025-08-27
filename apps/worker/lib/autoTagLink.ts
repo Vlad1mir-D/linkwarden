@@ -77,7 +77,7 @@ export default async function autoTagLink(
 
   const description =
     metaDescription ||
-    (link.textContent ? link.textContent?.slice(0, 500) + "..." : undefined);
+    (link.textContent ? link.textContent?.slice(0, 4000) + "..." : undefined);
 
   if (!description) return;
 
@@ -148,8 +148,8 @@ export default async function autoTagLink(
 
     console.log("Tags for link:", link.url, "=>", tags);
 
-    if (tags.length > 5) {
-      tags = tags.slice(0, 5);
+    if (tags.length > 10) {
+      tags = tags.slice(0, 10);
     }
 
     await prisma.link.update({
